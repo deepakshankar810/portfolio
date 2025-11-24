@@ -36,9 +36,16 @@
             -ms-overflow-style: none;  /* IE and Edge */
             scrollbar-width: none;  /* Firefox */
         }
+        
+        /* Masking for scrollable nav fade effect */
+        .mask-gradient {
+            -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+            mask-image: linear-gradient(to right, black 90%, transparent 100%);
+        }
     </style>
 </head>
-<body class="antialiased overflow-hidden h-screen flex flex-col bg-slate-50 dark:bg-[#0B1120] text-slate-700 dark:text-slate-300">
+<!-- FIXED: Added h-[100dvh] for mobile browsers -->
+<body class="antialiased overflow-hidden h-screen h-[100dvh] flex flex-col bg-slate-50 dark:bg-[#0B1120] text-slate-700 dark:text-slate-300">
     
     <!-- Nav -->
     <nav class="w-full z-50 bg-white/90 dark:bg-[#0B1120]/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 flex-shrink-0 relative">
@@ -46,9 +53,8 @@
             <div class="flex items-center justify-between h-20">
                 
                 <!-- LEFT SIDE: Scrollable Tabs -->
-                <!-- Using flex-1 to take up available space, overflow-x-auto for scrolling -->
                 <div class="flex-1 flex items-center overflow-x-auto no-scrollbar mask-gradient mr-4">
-                    <div class="flex space-x-2 md:space-x-8">
+                    <div class="flex space-x-2 md:space-x-8 pr-4">
                         <button onclick="switchTab('home')" class="nav-btn active text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Home</button>
                         <button onclick="switchTab('about')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">About</button>
                         <button onclick="switchTab('skills')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Skills</button>
@@ -71,14 +77,15 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow relative overflow-y-auto custom-scrollbar w-full">
+    <!-- FIXED: Added pb-32 to ensure bottom content is visible and scrollable -->
+    <main class="flex-grow relative overflow-y-auto custom-scrollbar w-full pb-32">
         
         <!-- CANVAS BG -->
         <canvas id="bio-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
         <!-- HOME -->
         <div id="tab-home" class="tab-pane h-full flex items-center justify-center p-4 fade-in relative z-10">
-            <div class="text-center">
+            <div class="text-center mt-[-10vh]"> <!-- Offset slightly up for visual balance -->
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 animate-slide-in">Deepak S P</h1>
                 <h2 class="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-400 mb-6 animate-slide-in" style="animation-delay: 0.1s">Biotechnologist</h2>
                 <p class="text-lg text-gray-500 dark:text-gray-400 mb-10 w-full mx-auto animate-slide-in" style="animation-delay: 0.2s">Bridging molecular biology and computational science to advance human health</p>
@@ -96,7 +103,7 @@
         </div>
 
         <!-- ABOUT -->
-        <div id="tab-about" class="tab-pane hidden p-8 md:p-12 max-w-6xl mx-auto fade-in relative z-10">
+        <div id="tab-about" class="tab-pane hidden p-6 md:p-12 max-w-6xl mx-auto fade-in relative z-10">
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="space-y-6">
                     <h2 class="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">About Me</h2>
@@ -136,7 +143,7 @@
         </div>
 
         <!-- SKILLS -->
-        <div id="tab-skills" class="tab-pane hidden p-8 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+        <div id="tab-skills" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Technical Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div onclick="openModal('skill_1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20">
@@ -186,7 +193,7 @@
         </div>
 
         <!-- PROJECTS -->
-        <div id="tab-projects" class="tab-pane hidden p-8 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+        <div id="tab-projects" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Projects</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div onclick="openModal('proj1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl relative overflow-hidden group cursor-pointer border-t-4 border-t-teal-500 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20 transition-all duration-300">
@@ -216,7 +223,7 @@
         </div>
 
         <!-- MANUSCRIPTS -->
-        <div id="tab-manuscripts" class="tab-pane hidden p-8 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+        <div id="tab-manuscripts" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Manuscripts</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div onclick="openModal('manu1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl cursor-pointer hover:bg-white dark:hover:bg-slate-800 hover:shadow-lg transition border-l-4 border-l-purple-500 flex flex-col h-full hover:-translate-y-1">
@@ -271,7 +278,7 @@
         </div>
 
         <!-- CERTIFICATIONS -->
-        <div id="tab-certifications" class="tab-pane hidden p-8 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+        <div id="tab-certifications" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Certifications</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div onclick="openModal('c1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl text-center cursor-pointer shadow-sm hover:shadow-lg hover:shadow-teal-100 dark:hover:shadow-teal-900/20 hover:-translate-y-1 transition h-full flex flex-col items-center justify-center">
