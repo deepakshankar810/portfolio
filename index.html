@@ -29,15 +29,17 @@
 
     <style>
         /* Hide Scrollbar for Mobile Nav */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Mask gradient for scrollable nav on mobile */
+        .mask-gradient {
+            -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+            mask-image: linear-gradient(to right, black 90%, transparent 100%);
         }
     </style>
 </head>
+<!-- Body with Dynamic Height -->
 <body class="antialiased overflow-hidden h-screen h-[100dvh] flex flex-col bg-slate-50 dark:bg-[#0B1120] text-slate-700 dark:text-slate-300">
     
     <!-- Nav -->
@@ -47,7 +49,7 @@
                 
                 <!-- LEFT SIDE: Scrollable Tabs -->
                 <div class="flex-1 flex items-center overflow-x-auto no-scrollbar mask-gradient mr-4">
-                    <div class="flex space-x-2 md:space-x-8">
+                    <div class="flex space-x-1 md:space-x-6">
                         <button onclick="switchTab('home')" class="nav-btn active text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Home</button>
                         <button onclick="switchTab('about')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">About</button>
                         <button onclick="switchTab('skills')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Skills</button>
@@ -70,15 +72,15 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow relative overflow-y-auto custom-scrollbar w-full pb-32">
+    <main class="flex-grow relative overflow-y-auto custom-scrollbar w-full">
         
         <!-- CANVAS BG -->
         <canvas id="bio-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
-        <!-- HOME -->
-        <div id="tab-home" class="tab-pane min-h-full flex items-center justify-center p-4 fade-in relative z-10">
-            <!-- FIXED: Removed negative margin on desktop (md:mt-0) to ensure perfect centering -->
-            <div class="text-center mt-[-10vh] md:mt-0"> 
+        <!-- HOME TAB (Fixed for PC Centering) -->
+        <div id="tab-home" class="tab-pane h-full flex items-center justify-center p-4 fade-in relative z-10">
+            <!-- Added md:-mt-20 to pull content up on desktop for true visual centering -->
+            <div class="text-center mt-[-10vh] md:mt-[-20vh]"> 
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 animate-slide-in">Deepak S P</h1>
                 <h2 class="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-400 mb-6 animate-slide-in" style="animation-delay: 0.1s">Biotechnologist</h2>
                 <p class="text-lg text-gray-500 dark:text-gray-400 mb-10 w-full mx-auto animate-slide-in" style="animation-delay: 0.2s">Bridging molecular biology and computational science to advance human health</p>
@@ -95,8 +97,8 @@
             </div>
         </div>
 
-        <!-- ABOUT -->
-        <div id="tab-about" class="tab-pane hidden p-6 md:p-12 max-w-6xl mx-auto fade-in relative z-10">
+        <!-- ABOUT (Scrollable with padding) -->
+        <div id="tab-about" class="tab-pane hidden p-6 md:p-12 max-w-6xl mx-auto fade-in relative z-10 pb-32">
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="space-y-6">
                     <h2 class="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">About Me</h2>
@@ -110,33 +112,32 @@
                     <h2 class="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Education</h2>
                     <div class="relative border-l-2 border-gray-300 dark:border-gray-700 ml-3 space-y-10">
                         <div class="mb-8 ml-6 group">
-    <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-600 rounded-full -left-3 ring-4 ring-white dark:ring-gray-900 group-hover:bg-teal-400 transition">
-        <i class="fas fa-graduation-cap text-xs text-white"></i>
-    </span>
-    <div class="bg-white dark:bg-slate-800 p-5 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-lg hover:border-teal-200 dark:hover:border-teal-500/30 transition transform hover:scale-[1.02]">
-        <time class="block mb-2 text-sm font-bold leading-none text-teal-600 dark:text-teal-400">Aug 2023 - May 2025</time>
-        <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Master of Science in Biotechnology</h3>
-        <p class="text-base font-normal text-gray-600 dark:text-gray-400 mt-1">Sri Ramachandra Institute of Higher Education and Research, Chennai</p>
-    </div>
-</div>
-<div class="mb-8 ml-6 group">
-    <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-600 rounded-full -left-3 ring-4 ring-white dark:ring-gray-900 group-hover:bg-teal-400 transition">
-        <i class="fas fa-graduation-cap text-xs text-white"></i>
-    </span>
-    <div class="bg-white dark:bg-slate-800 p-5 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-lg hover:border-teal-200 dark:hover:border-teal-500/30 transition transform hover:scale-[1.02]">
-        <time class="block mb-2 text-sm font-bold leading-none text-teal-600 dark:text-teal-400">Sept 2020 - May 2023</time>
-        <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Bachelor of Science in Advanced Zoology and Biotechnology</h3>
-        <p class="text-base font-normal text-gray-600 dark:text-gray-400 mt-1">Loyola College, Chennai</p>
-    </div>
-</div>
-
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-600 rounded-full -left-3 ring-4 ring-white dark:ring-gray-900 group-hover:bg-teal-400 transition">
+                                <i class="fas fa-graduation-cap text-xs text-white"></i>
+                            </span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-lg hover:border-teal-200 dark:hover:border-teal-500/30 transition transform hover:scale-[1.02]">
+                                <time class="block mb-2 text-sm font-bold leading-none text-teal-600 dark:text-teal-400">Aug 2023 - May 2025</time>
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Master of Science in Biotechnology</h3>
+                                <p class="text-base font-normal text-gray-600 dark:text-gray-400 mt-1">Sri Ramachandra Institute of Higher Education and Research, Chennai</p>
+                            </div>
+                        </div>
+                        <div class="mb-8 ml-6 group">
+                            <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-600 rounded-full -left-3 ring-4 ring-white dark:ring-gray-900 group-hover:bg-teal-400 transition">
+                                <i class="fas fa-graduation-cap text-xs text-white"></i>
+                            </span>
+                            <div class="bg-white dark:bg-slate-800 p-5 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-lg hover:border-teal-200 dark:hover:border-teal-500/30 transition transform hover:scale-[1.02]">
+                                <time class="block mb-2 text-sm font-bold leading-none text-teal-600 dark:text-teal-400">Sept 2020 - May 2023</time>
+                                <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Bachelor of Science in Advanced Zoology and Biotechnology</h3>
+                                <p class="text-base font-normal text-gray-600 dark:text-gray-400 mt-1">Loyola College, Chennai</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SKILLS -->
-        <div id="tab-skills" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+        <!-- SKILLS (Scrollable with padding) -->
+        <div id="tab-skills" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Technical Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div onclick="openModal('skill_1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20">
@@ -185,8 +186,8 @@
             </div>
         </div>
 
-        <!-- PROJECTS -->
-        <div id="tab-projects" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+        <!-- PROJECTS (Scrollable with padding) -->
+        <div id="tab-projects" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Projects</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div onclick="openModal('proj1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl relative overflow-hidden group cursor-pointer border-t-4 border-t-teal-500 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20 transition-all duration-300">
@@ -215,8 +216,8 @@
             </div>
         </div>
 
-        <!-- MANUSCRIPTS -->
-        <div id="tab-manuscripts" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+        <!-- MANUSCRIPTS (Scrollable with padding) -->
+        <div id="tab-manuscripts" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Manuscripts</h2>
             <div class="grid md:grid-cols-2 gap-6">
                 <div onclick="openModal('manu1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl cursor-pointer hover:bg-white dark:hover:bg-slate-800 hover:shadow-lg transition border-l-4 border-l-purple-500 flex flex-col h-full hover:-translate-y-1">
@@ -270,8 +271,8 @@
             </div>
         </div>
 
-        <!-- CERTIFICATIONS -->
-        <div id="tab-certifications" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+        <!-- CERTIFICATIONS (Scrollable with padding) -->
+        <div id="tab-certifications" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Certifications</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div onclick="openModal('c1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl text-center cursor-pointer shadow-sm hover:shadow-lg hover:shadow-teal-100 dark:hover:shadow-teal-900/20 hover:-translate-y-1 transition h-full flex flex-col items-center justify-center">
@@ -298,9 +299,10 @@
             </div>
         </div>
 
-        <!-- CONTACT -->
-        <div id="tab-contact" class="tab-pane hidden min-h-full flex flex-col items-center justify-center p-4 fade-in relative z-10 py-12">
-            <div class="text-center max-w-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-10 rounded-2xl shadow-xl">
+        <!-- CONTACT (Fixed for PC Centering) -->
+        <div id="tab-contact" class="tab-pane hidden h-full flex flex-col items-center justify-center p-4 fade-in relative z-10">
+            <!-- Added md:-mt-20 for better vertical alignment -->
+            <div class="text-center max-w-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-10 rounded-2xl shadow-xl mt-[-5vh] md:mt-[-20vh]">
                 <h2 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6">Get In Touch</h2>
                 <p class="text-gray-600 dark:text-gray-400 text-lg mb-8">
                     I'm currently looking for new opportunities in biotechnology and data science. 
