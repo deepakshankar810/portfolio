@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deepak S P</title>
+    <!-- Inline Favicon (Laptop Icon) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
     
-    <!-- External Libraries -->
+    <!-- External Libraries (Tailwind + FontAwesome) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom CSS -->
+    <!-- Custom CSS (Linked correctly to your root css folder) -->
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Tailwind Dark Mode Config -->
@@ -39,7 +40,7 @@
         }
     </style>
 </head>
-<!-- Body with Dynamic Height -->
+<!-- Body with Dynamic Height for Mobile Browsers -->
 <body class="antialiased overflow-hidden h-screen h-[100dvh] flex flex-col bg-slate-50 dark:bg-[#0B1120] text-slate-700 dark:text-slate-300">
     
     <!-- Nav -->
@@ -77,10 +78,10 @@
         <!-- CANVAS BG -->
         <canvas id="bio-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
-        <!-- HOME TAB (Fixed Centering) -->
+        <!-- HOME TAB (Centered Fix for PC) -->
         <div id="tab-home" class="tab-pane h-full flex items-center justify-center p-4 fade-in relative z-10">
-            <!-- Removed negative top margins to allow perfect centering by flexbox -->
-            <div class="text-center"> 
+            <!-- md:-mt-20 pulls it up slightly on large screens for better visual center -->
+            <div class="text-center mt-[-10vh] md:mt-[-20vh]"> 
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 animate-slide-in">Deepak S P</h1>
                 <h2 class="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-400 mb-6 animate-slide-in" style="animation-delay: 0.1s">Biotechnologist</h2>
                 <p class="text-lg text-gray-500 dark:text-gray-400 mb-10 w-full mx-auto animate-slide-in" style="animation-delay: 0.2s">Bridging molecular biology and computational science to advance human health</p>
@@ -97,7 +98,7 @@
             </div>
         </div>
 
-        <!-- ABOUT (Scrollable with padding) -->
+        <!-- ABOUT TAB -->
         <div id="tab-about" class="tab-pane hidden p-6 md:p-12 max-w-6xl mx-auto fade-in relative z-10 pb-32">
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="space-y-6">
@@ -136,7 +137,7 @@
             </div>
         </div>
 
-        <!-- SKILLS (Scrollable with padding) -->
+        <!-- SKILLS -->
         <div id="tab-skills" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Technical Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -186,7 +187,7 @@
             </div>
         </div>
 
-        <!-- PROJECTS (Scrollable with padding) -->
+        <!-- PROJECTS -->
         <div id="tab-projects" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Projects</h2>
             <div class="grid md:grid-cols-2 gap-8">
@@ -216,7 +217,7 @@
             </div>
         </div>
 
-        <!-- MANUSCRIPTS (Scrollable with padding) -->
+        <!-- MANUSCRIPTS -->
         <div id="tab-manuscripts" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Manuscripts</h2>
             <div class="grid md:grid-cols-2 gap-6">
@@ -299,10 +300,10 @@
             </div>
         </div>
 
-        <!-- CONTACT (Fixed for PC Centering) -->
+        <!-- CONTACT (Fixed Centering) -->
         <div id="tab-contact" class="tab-pane hidden min-h-full flex flex-col items-center justify-center p-4 fade-in relative z-10">
-            <!-- Added md:-mt-20 for better vertical alignment -->
-            <div class="text-center max-w-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-10 rounded-2xl shadow-xl md:-mt-20">
+            <!-- Added negative margin to visually center it perfectly on PC -->
+            <div class="text-center max-w-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-10 rounded-2xl shadow-xl mt-[-5vh] md:mt-[-20vh]">
                 <h2 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6">Get In Touch</h2>
                 <p class="text-gray-600 dark:text-gray-400 text-lg mb-8">
                     I'm currently looking for new opportunities in biotechnology and data science. 
