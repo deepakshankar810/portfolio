@@ -36,15 +36,8 @@
             -ms-overflow-style: none;  /* IE and Edge */
             scrollbar-width: none;  /* Firefox */
         }
-        
-        /* Masking for scrollable nav fade effect */
-        .mask-gradient {
-            -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
-            mask-image: linear-gradient(to right, black 90%, transparent 100%);
-        }
     </style>
 </head>
-<!-- FIXED: Added h-[100dvh] for mobile browsers -->
 <body class="antialiased overflow-hidden h-screen h-[100dvh] flex flex-col bg-slate-50 dark:bg-[#0B1120] text-slate-700 dark:text-slate-300">
     
     <!-- Nav -->
@@ -54,7 +47,7 @@
                 
                 <!-- LEFT SIDE: Scrollable Tabs -->
                 <div class="flex-1 flex items-center overflow-x-auto no-scrollbar mask-gradient mr-4">
-                    <div class="flex space-x-2 md:space-x-8 pr-4">
+                    <div class="flex space-x-2 md:space-x-8">
                         <button onclick="switchTab('home')" class="nav-btn active text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Home</button>
                         <button onclick="switchTab('about')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">About</button>
                         <button onclick="switchTab('skills')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Skills</button>
@@ -77,15 +70,15 @@
     </nav>
 
     <!-- Main Content -->
-    <!-- FIXED: Added pb-32 to ensure bottom content is visible and scrollable -->
     <main class="flex-grow relative overflow-y-auto custom-scrollbar w-full pb-32">
         
         <!-- CANVAS BG -->
         <canvas id="bio-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
         <!-- HOME -->
-        <div id="tab-home" class="tab-pane h-full flex items-center justify-center p-4 fade-in relative z-10">
-            <div class="text-center mt-[-10vh]"> <!-- Offset slightly up for visual balance -->
+        <div id="tab-home" class="tab-pane min-h-full flex items-center justify-center p-4 fade-in relative z-10">
+            <!-- FIXED: Removed negative margin on desktop (md:mt-0) to ensure perfect centering -->
+            <div class="text-center mt-[-10vh] md:mt-0"> 
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 animate-slide-in">Deepak S P</h1>
                 <h2 class="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-400 mb-6 animate-slide-in" style="animation-delay: 0.1s">Biotechnologist</h2>
                 <p class="text-lg text-gray-500 dark:text-gray-400 mb-10 w-full mx-auto animate-slide-in" style="animation-delay: 0.2s">Bridging molecular biology and computational science to advance human health</p>
@@ -306,7 +299,7 @@
         </div>
 
         <!-- CONTACT -->
-        <div id="tab-contact" class="tab-pane hidden h-full flex items-center justify-center p-4 fade-in relative z-10">
+        <div id="tab-contact" class="tab-pane hidden min-h-full flex flex-col items-center justify-center p-4 fade-in relative z-10 py-12">
             <div class="text-center max-w-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-10 rounded-2xl shadow-xl">
                 <h2 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6">Get In Touch</h2>
                 <p class="text-gray-600 dark:text-gray-400 text-lg mb-8">
