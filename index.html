@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak S P</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Tailwind Dark Mode Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 850: '#151f32' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased overflow-hidden h-screen flex flex-col bg-slate-50 dark:bg-[#0B1120] text-slate-700 dark:text-slate-300">
+    
+    <!-- Nav -->
+    <nav class="w-full z-50 bg-white/90 dark:bg-[#0B1120]/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 flex-shrink-0">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- THEME SWITCHER -->
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition focus:outline-none transform hover:scale-110 active:scale-95" title="Toggle Theme">
+                    <i id="theme-icon" class="fas fa-moon text-teal-600 dark:text-teal-400 text-xl md:text-2xl"></i>
+                </button>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="switchTab('home')" class="nav-btn active text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium">Home</button>
+                    <button onclick="switchTab('about')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium">About</button>
+                    <button onclick="switchTab('skills')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium">Skills</button>
+                    <button onclick="switchTab('projects')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium">Projects</button>
+                    <button onclick="switchTab('manuscripts')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium">Manuscripts</button>
+                    <button onclick="switchTab('certifications')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium">Certifications</button>
+                    <button onclick="switchTab('contact')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium">Contact</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <i class="fas fa-bars text-gray-500 dark:text-gray-400 text-xl"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow relative overflow-y-auto custom-scrollbar w-full">
+        
+        <!-- CANVAS BG -->
+        <canvas id="bio-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+
+        <!-- HOME -->
+        <div id="tab-home" class="tab-pane h-full flex items-center justify-center p-4 fade-in relative z-10">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 animate-slide-in">Deepak S P</h1>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-400 mb-6 animate-slide-in" style="animation-delay: 0.1s">Biotechnologist</h2>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mb-10 w-full mx-auto animate-slide-in" style="animation-delay: 0.2s">Bridging molecular biology and computational science to advance human health</p>
+                
+                <div class="flex justify-center space-x-6 animate-slide-in animate-float" style="animation-delay: 0.3s">
+                    <a href="https://github.com/deepakshankar810" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition hover:scale-110"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/deepak-s-p-rs7176005/" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:deepakshankar810@gmail.com" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition hover:scale-110"><i class="fas fa-envelope"></i></a>
+                </div>
+                
+                <div class="mt-12 animate-slide-in" style="animation-delay: 0.4s">
+                     <button onclick="viewMyWork()" class="px-8 py-3 bg-teal-600 hover:bg-teal-700 dark:hover:bg-teal-500 text-white rounded-full font-bold transition shadow-lg shadow-teal-600/20 transform hover:scale-105 active:scale-95">View My Work</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT -->
+        <div id="tab-about" class="tab-pane hidden p-8 md:p-12 max-w-6xl mx-auto fade-in relative z-10">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">About Me</h2>
+                    <div class="space-y-4">
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-justify">Biotechnology postgraduate with a strong foundation in molecular biology, microbial genetics and computational biology. Skilled in PCR-based gene profiling, SNP analysis, microbial screening and computational techniques such as homology modelling, molecular docking and protein–ligand interaction analysis.</p>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-justify">I have contributed to multidisciplinary research projects ranging from SNP analysis in breast cancer, virulence gene profiling in Enterococcus faecalis and protein–ligand interactions comparison to machine learning models for hepatitis B progression and diabetic complications. I have also assisted in the development of juProt, an open-source Julia-based tool for comparative protein–ligand interaction analysis. My experience spans both wet-lab experimentation and computational data-driven research.</p>
+                        <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-justify">Alongside my scientific work, I leverage my passion for data science, actively integrating computational approaches to build efficient, scalable solutions in bioinformatics and translational biology. I’m eager to apply these skills to contribute to research and innovation in biotechnology with a focus on advancing human health and sustainability.</p>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-teal-700 dark:text-teal-400 mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">Education</h2>
+                    <div class="relative border-l-2 border-gray-300 dark:border-gray-700 ml-3 space-y-10">
+                        <div class="mb-8 ml-6 group">
+    <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-600 rounded-full -left-3 ring-4 ring-white dark:ring-gray-900 group-hover:bg-teal-400 transition">
+        <i class="fas fa-graduation-cap text-xs text-white"></i>
+    </span>
+    <div class="bg-white dark:bg-slate-800 p-5 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-lg hover:border-teal-200 dark:hover:border-teal-500/30 transition transform hover:scale-[1.02]">
+        <time class="block mb-2 text-sm font-bold leading-none text-teal-600 dark:text-teal-400">Aug 2023 - May 2025</time>
+        <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Master of Science in Biotechnology</h3>
+        <p class="text-base font-normal text-gray-600 dark:text-gray-400 mt-1">Sri Ramachandra Institute of Higher Education and Research, Chennai</p>
+    </div>
+</div>
+<div class="mb-8 ml-6 group">
+    <span class="absolute flex items-center justify-center w-6 h-6 bg-teal-600 rounded-full -left-3 ring-4 ring-white dark:ring-gray-900 group-hover:bg-teal-400 transition">
+        <i class="fas fa-graduation-cap text-xs text-white"></i>
+    </span>
+    <div class="bg-white dark:bg-slate-800 p-5 rounded-lg shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-lg hover:border-teal-200 dark:hover:border-teal-500/30 transition transform hover:scale-[1.02]">
+        <time class="block mb-2 text-sm font-bold leading-none text-teal-600 dark:text-teal-400">Sept 2020 - May 2023</time>
+        <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">Bachelor of Science in Advanced Zoology and Biotechnology</h3>
+        <p class="text-base font-normal text-gray-600 dark:text-gray-400 mt-1">Loyola College, Chennai</p>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div id="tab-skills" class="tab-pane hidden p-8 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+            <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div onclick="openModal('skill_1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20">
+    <div class="flex justify-between items-start mb-6">
+        <i class="fas fa-dna text-4xl text-gray-400 dark:text-gray-400 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors"></i>
+    </div>
+    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">Molecular Biology</h3>
+    <p class="text-teal-600 dark:text-teal-400 text-sm font-mono font-bold">7 skills</p>
+</div>
+<div onclick="openModal('skill_2')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20">
+    <div class="flex justify-between items-start mb-6">
+        <i class="fas fa-bacterium text-4xl text-gray-400 dark:text-gray-400 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors"></i>
+    </div>
+    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">Microbiology</h3>
+    <p class="text-teal-600 dark:text-teal-400 text-sm font-mono font-bold">3 skills</p>
+</div>
+<div onclick="openModal('skill_3')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20">
+    <div class="flex justify-between items-start mb-6">
+        <i class="fas fa-vial text-4xl text-gray-400 dark:text-gray-400 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors"></i>
+    </div>
+    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">Cell Culture</h3>
+    <p class="text-teal-600 dark:text-teal-400 text-sm font-mono font-bold">4 skills</p>
+</div>
+<div onclick="openModal('skill_4')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20">
+    <div class="flex justify-between items-start mb-6">
+        <i class="fas fa-laptop-code text-4xl text-gray-400 dark:text-gray-400 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors"></i>
+    </div>
+    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">Computational Biology</h3>
+    <p class="text-teal-600 dark:text-teal-400 text-sm font-mono font-bold">3 skills</p>
+</div>
+<div onclick="openModal('skill_5')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20">
+    <div class="flex justify-between items-start mb-6">
+        <i class="fas fa-database text-4xl text-gray-400 dark:text-gray-400 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors"></i>
+    </div>
+    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">Data Science</h3>
+    <p class="text-teal-600 dark:text-teal-400 text-sm font-mono font-bold">5 skills</p>
+</div>
+<div onclick="openModal('skill_6')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl cursor-pointer group transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20">
+    <div class="flex justify-between items-start mb-6">
+        <i class="fas fa-pen text-4xl text-gray-400 dark:text-gray-400 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition-colors"></i>
+    </div>
+    <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">Others</h3>
+    <p class="text-teal-600 dark:text-teal-400 text-sm font-mono font-bold">2 skills</p>
+</div>
+
+            </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div id="tab-projects" class="tab-pane hidden p-8 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+            <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div onclick="openModal('proj1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl relative overflow-hidden group cursor-pointer border-t-4 border-t-teal-500 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20 transition-all duration-300">
+    <div class="relative z-10">
+        <div class="flex justify-between items-start mb-4">
+            <i class="fas fa-dna text-4xl text-teal-500"></i>
+            <i class="fas fa-arrow-right text-gray-400 dark:text-gray-500 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition leading-snug">Analysis of the SNP, rs7176005 of CYP19A1 in Breast Cancer Pathogenesis using Computational and Molecular Approaches</h3>
+        <p class="text-sm text-teal-600 dark:text-teal-400 font-bold mb-4 uppercase tracking-wide">PCR & Computational Analysis</p>
+        <p class="text-gray-600 dark:text-gray-400 line-clamp-3">Computational and molecular analysis of SNP rs7176005 in CYP19A1 for its role in breast cancer pathogenesis.</p>
+    </div>
+</div>
+<div onclick="openModal('proj2')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-8 rounded-2xl relative overflow-hidden group cursor-pointer border-t-4 border-t-teal-500 hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20 transition-all duration-300">
+    <div class="relative z-10">
+        <div class="flex justify-between items-start mb-4">
+            <i class="fas fa-bacterium text-4xl text-teal-500"></i>
+            <i class="fas fa-arrow-right text-gray-400 dark:text-gray-500 group-hover:text-teal-500 dark:group-hover:text-teal-400 transition"></i>
+        </div>
+        <h3 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-3 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition leading-snug">cylM Gene Incidence and Molecular Docking of Swietenia macrophylla Compounds against Cytolysin in E. faecalis Dental Isolates</h3>
+        <p class="text-sm text-teal-600 dark:text-teal-400 font-bold mb-4 uppercase tracking-wide">Gene Screening & Molecular Docking</p>
+        <p class="text-gray-600 dark:text-gray-400 line-clamp-3">Molecular docking of Swietenia macrophylla compounds against Cytolysin in dental isolates.</p>
+    </div>
+</div>
+
+            </div>
+        </div>
+
+        <!-- MANUSCRIPTS -->
+        <div id="tab-manuscripts" class="tab-pane hidden p-8 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+            <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Manuscripts</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div onclick="openModal('manu1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl cursor-pointer hover:bg-white dark:hover:bg-slate-800 hover:shadow-lg transition border-l-4 border-l-purple-500 flex flex-col h-full hover:-translate-y-1">
+    <div class="flex justify-between items-center mb-3">
+        <span class="text-xs font-bold px-2 py-1 rounded bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">Manuscript in Communication</span>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 leading-snug mb-4 hover:text-teal-600 dark:hover:text-teal-400 transition">Virulence Gene Prevalence in Enterococcus faecalis from Dental Infections in South India</h3>
+    
+    <div class="mt-auto flex items-center justify-between">
+        <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center"><i class="fas fa-info-circle mr-2"></i> Click for details</p>
+        
+    </div>
+</div>
+<div onclick="openModal('manu2')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl cursor-pointer hover:bg-white dark:hover:bg-slate-800 hover:shadow-lg transition border-l-4 border-l-purple-500 flex flex-col h-full hover:-translate-y-1">
+    <div class="flex justify-between items-center mb-3">
+        <span class="text-xs font-bold px-2 py-1 rounded bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">Manuscript in Communication</span>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 leading-snug mb-4 hover:text-teal-600 dark:hover:text-teal-400 transition">juProt: A Web Application for Comparative Analysis of Protein-Ligand Interactomes</h3>
+    
+    <div class="mt-auto flex items-center justify-between">
+        <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center"><i class="fas fa-info-circle mr-2"></i> Click for details</p>
+        <a href="https://juprot.info" target="_blank" onclick="event.stopPropagation()" class="flex items-center text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-white transition z-20 px-3 py-1 border border-teal-200 dark:border-teal-500/30 rounded-md hover:bg-teal-50 dark:hover:bg-teal-500/20 text-xs font-bold uppercase tracking-wider">
+    <i class="fas fa-external-link-alt mr-2"></i> Live Tool
+</a>
+
+    </div>
+</div>
+<div onclick="openModal('manu3')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl cursor-pointer hover:bg-white dark:hover:bg-slate-800 hover:shadow-lg transition border-l-4 border-l-purple-500 flex flex-col h-full hover:-translate-y-1">
+    <div class="flex justify-between items-center mb-3">
+        <span class="text-xs font-bold px-2 py-1 rounded bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">Manuscript in Communication</span>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 leading-snug mb-4 hover:text-teal-600 dark:hover:text-teal-400 transition">Machine Learning-Based Prediction of Diabetic Retinopathy and Nephropathy (Hornerin & SFN Biomarkers)</h3>
+    
+    <div class="mt-auto flex items-center justify-between">
+        <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center"><i class="fas fa-info-circle mr-2"></i> Click for details</p>
+        
+    </div>
+</div>
+<div onclick="openModal('manu4')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl cursor-pointer hover:bg-white dark:hover:bg-slate-800 hover:shadow-lg transition border-l-4 border-l-purple-500 flex flex-col h-full hover:-translate-y-1">
+    <div class="flex justify-between items-center mb-3">
+        <span class="text-xs font-bold px-2 py-1 rounded bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400">Manuscript in Communication</span>
+    </div>
+    <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 leading-snug mb-4 hover:text-teal-600 dark:hover:text-teal-400 transition">Predicting Chronic Hepatitis B Progression Using Interpretable Machine Learning on Sparse Clinical Data</h3>
+    
+    <div class="mt-auto flex items-center justify-between">
+        <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center"><i class="fas fa-info-circle mr-2"></i> Click for details</p>
+        
+    </div>
+</div>
+
+            </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <div id="tab-certifications" class="tab-pane hidden p-8 md:p-12 max-w-7xl mx-auto fade-in relative z-10">
+            <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div onclick="openModal('c1')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl text-center cursor-pointer shadow-sm hover:shadow-lg hover:shadow-teal-100 dark:hover:shadow-teal-900/20 hover:-translate-y-1 transition h-full flex flex-col items-center justify-center">
+    <i class="fas fa-laptop-code text-4xl text-yellow-500 mb-4"></i>
+    <h3 class="font-bold text-gray-800 dark:text-gray-100 mb-2 text-lg">Green Tea Bioactives as Natural DHT Blocker</h3>
+    <p class="text-xs text-gray-500 dark:text-gray-400">E-poster presentation on sustainable therapeutics</p>
+</div>
+<div onclick="openModal('c2')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl text-center cursor-pointer shadow-sm hover:shadow-lg hover:shadow-teal-100 dark:hover:shadow-teal-900/20 hover:-translate-y-1 transition h-full flex flex-col items-center justify-center">
+    <i class="fas fa-leaf text-4xl text-yellow-500 mb-4"></i>
+    <h3 class="font-bold text-gray-800 dark:text-gray-100 mb-2 text-lg">Seminar & Workshop on Biodiversity to Biotechnology</h3>
+    <p class="text-xs text-gray-500 dark:text-gray-400">Two-day seminar</p>
+</div>
+<div onclick="openModal('c3')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl text-center cursor-pointer shadow-sm hover:shadow-lg hover:shadow-teal-100 dark:hover:shadow-teal-900/20 hover:-translate-y-1 transition h-full flex flex-col items-center justify-center">
+    <i class="fas fa-graduation-cap text-4xl text-yellow-500 mb-4"></i>
+    <h3 class="font-bold text-gray-800 dark:text-gray-100 mb-2 text-lg">SWAYAM NPTEL- Basics of Crop Breeding and Plant Biotechnology</h3>
+    <p class="text-xs text-gray-500 dark:text-gray-400">12-week IIT Kharagpur course</p>
+</div>
+<div onclick="openModal('c4')" class="bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-6 rounded-xl text-center cursor-pointer shadow-sm hover:shadow-lg hover:shadow-teal-100 dark:hover:shadow-teal-900/20 hover:-translate-y-1 transition h-full flex flex-col items-center justify-center">
+    <i class="fas fa-robot text-4xl text-yellow-500 mb-4"></i>
+    <h3 class="font-bold text-gray-800 dark:text-gray-100 mb-2 text-lg">Generative AI MasterMind – Outskill</h3>
+    <p class="text-xs text-gray-500 dark:text-gray-400">Certification in Prompt Engineering & AI Applications</p>
+</div>
+
+            </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div id="tab-contact" class="tab-pane hidden h-full flex items-center justify-center p-4 fade-in relative z-10">
+            <div class="text-center max-w-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-10 rounded-2xl shadow-xl">
+                <h2 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6">Get In Touch</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-lg mb-8">
+                    I'm currently looking for new opportunities in biotechnology and data science. 
+                    Whether you have a question or just want to say hi, my inbox is always open!
+                </p>
+                <a href="mailto:deepakshankar810@gmail.com" class="inline-flex items-center px-8 py-4 border-2 border-teal-500 text-teal-600 dark:text-teal-400 font-bold rounded-lg hover:bg-teal-500 hover:text-white transition duration-300 transform hover:-translate-y-1">
+                    <i class="fas fa-paper-plane mr-2"></i> Say Hello
+                </a>
+                
+                <div class="mt-12 pt-8 border-t border-gray-100 dark:border-slate-700 flex justify-center space-x-8">
+                    <a href="https://github.com/deepakshankar810" class="text-gray-400 hover:text-gray-800 dark:hover:text-white transition"><i class="fab fa-github text-2xl"></i></a>
+                    <a href="https://www.linkedin.com/in/deepak-s-p-rs7176005/" class="text-gray-400 hover:text-gray-800 dark:hover:text-white transition"><i class="fab fa-linkedin text-2xl"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Modals -->
+    <div id="skill_1" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('skill_1')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Molecular Biology</h3>
+                <button onclick="closeModal('skill_1')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>PCR- Standard, Gradient and Touch-Down</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>DNA isolation from blood and oral wash samples</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Cloning</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 400ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Transformation</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 500ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Ligation</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 600ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>ELISA</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 700ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Gel Electrophoresis</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('skill_1')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="skill_2" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('skill_2')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Microbiology</h3>
+                <button onclick="closeModal('skill_2')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Pure culture techniques</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Disc Diffusion method</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Microbial identification and screening</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('skill_2')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="skill_3" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('skill_3')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Cell Culture</h3>
+                <button onclick="closeModal('skill_3')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Cell line maintenance</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Cell viability</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Cytotoxicity assay</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 400ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Cell migration- Wound Healing assay</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('skill_3')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="skill_4" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('skill_4')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Computational Biology</h3>
+                <button onclick="closeModal('skill_4')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Homology modelling- SWISS-MODEL</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Molecular Docking- AMDOCK</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Molecular Visualization- PyMOL and Discovery Studio Visualizer</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('skill_4')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="skill_5" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('skill_5')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Data Science</h3>
+                <button onclick="closeModal('skill_5')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Language: Julia</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Libraries/Packages: DataFrames.jl, CSV.jl, Plots.jl, MLJ.jl and StatsPlot.jl</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Model: XGBoost, Random Forest Cross-validation (LOOCV & k-fold) and Feature importance</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 400ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Techniques: Data Wrangling & Encoding, Exploratory Data Analysis, Model Evaluation and Validation</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 500ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Tools: Git, Github and VSCode</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('skill_5')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="skill_6" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('skill_6')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Others</h3>
+                <button onclick="closeModal('skill_6')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Scientific Writing</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>MS Office Packages</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('skill_6')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="proj1" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('proj1')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Analysis of the SNP, rs7176005 of CYP19A1 in Breast Cancer Pathogenesis using Computational and Molecular Approaches</h3>
+                <button onclick="closeModal('proj1')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Analyzed SNP rs7176005 in CYP19A1 for its role in breast cancer using computational methods.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Led and Collaborated with labmates to design and validate the PCR primers for SNP detection and confirmed via agarose gel electrophoresis.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Investigated estrogen roles, identifying SNP rs7176005 as a potential therapeutic target.</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('proj1')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="proj2" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('proj2')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">cylM Gene Incidence and Molecular Docking of Swietenia macrophylla Compounds against Cytolysin in E. faecalis Dental Isolates</h3>
+                <button onclick="closeModal('proj2')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Screened 35 E. faecalis isolates from dental infections using PCR, identifying the incidence of cylM gene.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Performed homology modeling of the cylM protein using SWISS-MODEL and molecular docking with 15 plant compounds via AMDock in order to evaluate the binding affinities and interactions.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Evaluated the binding affinities of 15 plant compounds and identified bioactive compounds against cylM protein.</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('proj2')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="manu1" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('manu1')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Virulence Gene Prevalence in Enterococcus faecalis from Dental Infections in South India</h3>
+                <button onclick="closeModal('manu1')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Co-authored a study on virulence genes in Enterococcus faecalis and analyzed eight virulence genes in 36 E. faecalis isolates from South Indian dental infections.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Highlighted the clinical implications of virulence gene distribution, providing key insights into infection mechanisms.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Contributed to drafting and revising a manuscript on E. faecalis pathogenicity in oral infections.</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('manu1')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="manu2" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('manu2')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">juProt: A Web Application for Comparative Analysis of Protein-Ligand Interactomes</h3>
+                <button onclick="closeModal('manu2')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Assisted in the Development of juProt, an open-source web application using Julia for comparative analysis of protein-ligand hydrogen bond interactions.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Analyzed data to validate the tool's core functionality against standalone PLIP on 20 diverse complexes, achieving 100% agreement in H-bond detection.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Applied juProt to study human aromatase inhibitors (Letrozole/Anastrozole) which will be helpful in studying and understanding how mutations impact H-bond patterns and affect drug binding affinity.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 400ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Live tool: <a href='https://juprot.info' target='_blank' class='text-teal-600 hover:underline'>juprot.info</a></span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('manu2')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="manu3" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('manu3')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Machine Learning-Based Prediction of Diabetic Retinopathy and Nephropathy (Hornerin & SFN Biomarkers)</h3>
+                <button onclick="closeModal('manu3')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Utilized a Random Forest Classifier in Julia to predict the progression from Diabetes Mellitus (DM) to Diabetic Retinopathy (DR) or Nephropathy (DN).</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Statistically validated the efficacy of novel biomarkers, Hornerin and SFN across disease groups, contributing to their recognition for early diabetic complication detection.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Analyzed 33 clinical and demographic features to identify the strongest predictors of complication onset to aid in improved patient care strategies.</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('manu3')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="manu4" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('manu4')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Predicting Chronic Hepatitis B Progression Using Interpretable Machine Learning on Sparse Clinical Data</h3>
+                <button onclick="closeModal('manu4')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Utilized interpretable machine learning (XGBoost in Julia) to predict the progression from acute to chronic Hepatitis B infection, achieving a 90.9% accuracy rate.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Identified and ranked the most critical biomarkers as the strongest predictors of chronicity and offering key insights for early risk stratification.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 300ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Engineered and analyzed 34 clinical and serological features from real-world data to build a robust model, contributing to the development of improved strategies for managing high-risk Hepatitis B patients.</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('manu4')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="c1" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('c1')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Green Tea Bioactives as Natural DHT Blocker</h3>
+                <button onclick="closeModal('c1')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Presented an e-poster on green tea bioactives as DHT blockers, showcasing expertise in computational biology.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Effectively communicated complex scientific concepts in a clear and engaging manner.</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('c1')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="c2" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('c2')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Seminar & Workshop on Biodiversity to Biotechnology</h3>
+                <button onclick="closeModal('c2')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Participated in a two-day seminar on “Biodiversity to Biotechnology,” gaining insights into biodiversity’s role in biofuels, pharmaceuticals, and climate solutions.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Engaged with traditional and modern biotechnological approaches, aligning with global and Indian biodiversity initiatives.</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('c2')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="c3" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('c3')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">SWAYAM NPTEL- Basics of Crop Breeding and Plant Biotechnology</h3>
+                <button onclick="closeModal('c3')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Completed a 12-week IIT Kharagpur course on crop breeding, learning the principles of molecular markers, genetic engineering, and transgenic plant screening.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Gained knowledge in applying biotechnological techniques for sustainable agriculture and crop improvement.</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('c3')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="c4" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/50 dark:bg-black/80 backdrop-blur-sm transition-opacity duration-300 opacity-0 modal-backdrop" onclick="closeModal('c4')"></div>
+    
+    <!-- Centered Content Wrapper -->
+    <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+        <div class="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0 modal-panel pointer-events-auto max-h-[90vh] flex flex-col">
+            
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 dark:border-slate-700 flex justify-between items-start shrink-0">
+                <h3 class="text-xl font-bold text-teal-600 dark:text-teal-400 pr-8">Generative AI MasterMind – Outskill</h3>
+                <button onclick="closeModal('c4')" class="text-gray-400 hover:text-gray-600 dark:hover:text-white transition"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Scrollable Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar">
+                <h4 class="text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 font-semibold mb-4">Key Details</h4>
+                <ul class="space-y-2"><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 100ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Successfully completed the Generative AI MasterMind certification, gaining hands-on experience with prompt engineering and practical AI applications.</span></li><li class='flex items-start mb-3 opacity-0 animate-slide-in' style='animation-delay: 200ms'><i class='fas fa-check-circle text-teal-500 dark:text-teal-400 mt-1 mr-3 text-sm flex-shrink-0'></i><span class='text-gray-600 dark:text-gray-300 text-sm text-justify'>Enhanced proficiency in content generation, automation and data-driven problem-solving.</span></li></ul>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-4 border-t border-gray-100 dark:border-slate-700 bg-gray-50 dark:bg-slate-800/50 rounded-b-2xl flex justify-end shrink-0">
+                <button onclick="closeModal('c4')" class="px-4 py-2 bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium transition">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Custom JS -->
+    <script src="./js/main.js"></script>
+
+</body>
+</html>
