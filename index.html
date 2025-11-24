@@ -36,15 +36,6 @@
             -ms-overflow-style: none;  /* IE and Edge */
             scrollbar-width: none;  /* Firefox */
         }
-
-        /* Mobile Menu Active State */
-        #mobile-menu:not(.hidden) {
-            animation: slideDown 0.3s ease-out forwards;
-        }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
     </style>
 </head>
 <body class="antialiased overflow-hidden h-screen flex flex-col bg-slate-50 dark:bg-[#0B1120] text-slate-700 dark:text-slate-300">
@@ -52,22 +43,27 @@
     <!-- Nav -->
     <nav class="w-full z-50 bg-white/90 dark:bg-[#0B1120]/90 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 flex-shrink-0 relative">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center h-20 overflow-hidden">
+            <div class="flex items-center justify-between h-20">
                 
-                <!-- THEME SWITCHER (Fixed Left) -->
-                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition focus:outline-none transform hover:scale-110 active:scale-95 flex-shrink-0 mr-4" title="Toggle Theme">
-                    <i id="theme-icon" class="fas fa-moon text-teal-600 dark:text-teal-400 text-xl md:text-2xl"></i>
-                </button>
-                
-                <!-- Scrollable Tabs (Visible on Mobile & Desktop) -->
-                <div class="flex items-center space-x-6 overflow-x-auto no-scrollbar w-full h-full">
-                    <button onclick="switchTab('home')" class="nav-btn active text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium whitespace-nowrap">Home</button>
-                    <button onclick="switchTab('about')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium whitespace-nowrap">About</button>
-                    <button onclick="switchTab('skills')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium whitespace-nowrap">Skills</button>
-                    <button onclick="switchTab('projects')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium whitespace-nowrap">Projects</button>
-                    <button onclick="switchTab('manuscripts')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium whitespace-nowrap">Manuscripts</button>
-                    <button onclick="switchTab('certifications')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium whitespace-nowrap">Certifications</button>
-                    <button onclick="switchTab('contact')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition py-2 text-sm font-medium whitespace-nowrap">Contact</button>
+                <!-- LEFT SIDE: Scrollable Tabs -->
+                <!-- Using flex-1 to take up available space, overflow-x-auto for scrolling -->
+                <div class="flex-1 flex items-center overflow-x-auto no-scrollbar mask-gradient mr-4">
+                    <div class="flex space-x-2 md:space-x-8">
+                        <button onclick="switchTab('home')" class="nav-btn active text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Home</button>
+                        <button onclick="switchTab('about')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">About</button>
+                        <button onclick="switchTab('skills')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Skills</button>
+                        <button onclick="switchTab('projects')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Projects</button>
+                        <button onclick="switchTab('manuscripts')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Manuscripts</button>
+                        <button onclick="switchTab('certifications')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Certifications</button>
+                        <button onclick="switchTab('contact')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Contact</button>
+                    </div>
+                </div>
+
+                <!-- RIGHT SIDE: Theme Switcher -->
+                <div class="flex-shrink-0 pl-4 border-l border-gray-200 dark:border-gray-700">
+                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition focus:outline-none transform hover:scale-110 active:scale-95" title="Toggle Theme">
+                        <i id="theme-icon" class="fas fa-moon text-teal-600 dark:text-teal-400 text-xl md:text-2xl"></i>
+                    </button>
                 </div>
 
             </div>
