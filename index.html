@@ -37,6 +37,16 @@
             -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
             mask-image: linear-gradient(to right, black 90%, transparent 100%);
         }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
     </style>
 </head>
 <!-- Body with Dynamic Height -->
@@ -72,23 +82,32 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow relative overflow-y-auto custom-scrollbar w-full">
+    <main class="flex-grow relative overflow-y-auto custom-scrollbar w-full pb-32">
         
         <!-- CANVAS BG -->
         <canvas id="bio-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
         <!-- HOME TAB -->
         <div id="tab-home" class="tab-pane h-full flex items-center justify-center p-4 fade-in relative z-10">
-            <!-- Removed negative margins to lower content to true center -->
-            <div class="text-center"> 
+            <div class="text-center md:-mt-20"> 
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 animate-slide-in">Deepak S P</h1>
                 <h2 class="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-400 mb-6 animate-slide-in" style="animation-delay: 0.1s">Biotechnologist</h2>
                 <p class="text-lg text-gray-500 dark:text-gray-400 mb-10 w-full mx-auto animate-slide-in" style="animation-delay: 0.2s">Bridging molecular biology and computational science to advance human health</p>
                 
-                <div class="flex justify-center space-x-6 animate-slide-in animate-float" style="animation-delay: 0.3s">
-                    <a href="https://github.com/deepakshankar810" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition hover:scale-110"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/deepak-s-p-rs7176005/" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:deepakshankar810@gmail.com" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition hover:scale-110"><i class="fas fa-envelope"></i></a>
+                <!-- Floating Social Icons with Staggered Animation -->
+                <div class="flex justify-center space-x-8 animate-slide-in" style="animation-delay: 0.3s">
+                    <!-- GitHub (Delay 0s) -->
+                    <a href="https://github.com/deepakshankar810" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition transform hover:scale-110 floating" style="animation-delay: 0s">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <!-- LinkedIn (Delay 0.5s) -->
+                    <a href="https://www.linkedin.com/in/deepak-s-p-rs7176005/" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition transform hover:scale-110 floating" style="animation-delay: 0.5s">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <!-- Email (Delay 1s) -->
+                    <a href="mailto:deepakshankar810@gmail.com" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition transform hover:scale-110 floating" style="animation-delay: 1s">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
                 
                 <div class="mt-12 animate-slide-in" style="animation-delay: 0.4s">
@@ -97,7 +116,7 @@
             </div>
         </div>
 
-        <!-- ABOUT (Scrollable with padding) -->
+        <!-- ABOUT -->
         <div id="tab-about" class="tab-pane hidden p-6 md:p-12 max-w-6xl mx-auto fade-in relative z-10 pb-32">
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="space-y-6">
@@ -301,7 +320,8 @@
 
         <!-- CONTACT (Fixed for PC Centering) -->
         <div id="tab-contact" class="tab-pane hidden min-h-full flex flex-col items-center justify-center p-4 fade-in relative z-10">
-            <div class="text-center max-w-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-10 rounded-2xl shadow-xl">
+            <!-- Added md:-mt-20 for better vertical alignment -->
+            <div class="text-center max-w-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-10 rounded-2xl shadow-xl md:-mt-20">
                 <h2 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6">Get In Touch</h2>
                 <p class="text-gray-600 dark:text-gray-400 text-lg mb-8">
                     I'm currently looking for new opportunities in biotechnology and data science. 
