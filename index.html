@@ -37,16 +37,6 @@
             -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
             mask-image: linear-gradient(to right, black 90%, transparent 100%);
         }
-
-        /* Floating Animation Logic */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
     </style>
 </head>
 <!-- Body with Dynamic Height -->
@@ -82,32 +72,23 @@
     </nav>
 
     <!-- Main Content -->
-    <main class="flex-grow relative overflow-y-auto custom-scrollbar w-full">
+    <!-- Added ID 'main-content' to target it in JS for scrolling -->
+    <main id="main-content" class="flex-grow relative overflow-y-scroll custom-scrollbar w-full">
         
         <!-- CANVAS BG -->
         <canvas id="bio-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
 
-        <!-- HOME TAB (Fixed Centering + Floating Icons) -->
-        <div id="tab-home" class="tab-pane h-full flex items-center justify-center p-4 fade-in relative z-10">
+        <!-- HOME TAB -->
+        <div id="tab-home" class="tab-pane min-h-full flex items-center justify-center p-4 fade-in relative z-10">
             <div class="text-center w-full max-w-4xl">
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 animate-slide-in">Deepak S P</h1>
                 <h2 class="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-400 mb-6 animate-slide-in" style="animation-delay: 0.1s">Biotechnologist</h2>
                 <p class="text-lg text-gray-500 dark:text-gray-400 mb-10 w-full mx-auto animate-slide-in" style="animation-delay: 0.2s">Bridging molecular biology and computational science to advance human health</p>
                 
-                <!-- Floating Social Icons with Staggered Animation -->
-                <div class="flex justify-center space-x-8 animate-slide-in" style="animation-delay: 0.3s">
-                    <!-- GitHub (Delay 0s) -->
-                    <a href="https://github.com/deepakshankar810" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition transform hover:scale-110 floating" style="animation-delay: 0s">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <!-- LinkedIn (Delay 0.5s) -->
-                    <a href="https://www.linkedin.com/in/deepak-s-p-rs7176005/" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition transform hover:scale-110 floating" style="animation-delay: 0.5s">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <!-- Email (Delay 1s) -->
-                    <a href="mailto:deepakshankar810@gmail.com" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition transform hover:scale-110 floating" style="animation-delay: 1s">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                <div class="flex justify-center space-x-6 animate-slide-in animate-float" style="animation-delay: 0.3s">
+                    <a href="https://github.com/deepakshankar810" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition hover:scale-110"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/deepak-s-p-rs7176005/" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:deepakshankar810@gmail.com" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition hover:scale-110"><i class="fas fa-envelope"></i></a>
                 </div>
                 
                 <div class="mt-12 animate-slide-in" style="animation-delay: 0.4s">
@@ -116,7 +97,7 @@
             </div>
         </div>
 
-        <!-- ABOUT (Scrollable with padding) -->
+        <!-- ABOUT -->
         <div id="tab-about" class="tab-pane hidden p-6 md:p-12 max-w-6xl mx-auto fade-in relative z-10 pb-32">
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="space-y-6">
@@ -155,7 +136,7 @@
             </div>
         </div>
 
-        <!-- SKILLS (Scrollable: Added pb-32) -->
+        <!-- SKILLS (Scrollable with padding) -->
         <div id="tab-skills" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Technical Skills</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -205,7 +186,7 @@
             </div>
         </div>
 
-        <!-- PROJECTS (Scrollable: Added pb-32) -->
+        <!-- PROJECTS (Scrollable with padding) -->
         <div id="tab-projects" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Projects</h2>
             <div class="grid md:grid-cols-2 gap-8">
@@ -235,7 +216,7 @@
             </div>
         </div>
 
-        <!-- MANUSCRIPTS (Scrollable: Added pb-32) -->
+        <!-- MANUSCRIPTS (Scrollable with padding) -->
         <div id="tab-manuscripts" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
             <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Manuscripts</h2>
             <div class="grid md:grid-cols-2 gap-6">
@@ -321,16 +302,16 @@
         <!-- CONTACT (Fixed: Perfectly Centered) -->
         <div id="tab-contact" class="tab-pane hidden min-h-full flex flex-col items-center justify-center p-4 fade-in relative z-10">
             <div class="text-center max-w-2xl bg-white/90 dark:bg-slate-800/50 backdrop-blur-md border border-slate-200 dark:border-slate-700 p-10 rounded-2xl shadow-xl">
-                <h2 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6">Get In Touch</h2>
-                <p class="text-gray-600 dark:text-gray-400 text-lg mb-8">
+                <h2 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6 animate-slide-in">Get In Touch</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 animate-slide-in" style="animation-delay: 0.1s">
                     I'm currently looking for new opportunities in biotechnology and data science. 
                     Whether you have a question or just want to say hi, my inbox is always open!
                 </p>
-                <a href="mailto:deepakshankar810@gmail.com" class="inline-flex items-center px-8 py-4 border-2 border-teal-500 text-teal-600 dark:text-teal-400 font-bold rounded-lg hover:bg-teal-500 hover:text-white transition duration-300 transform hover:-translate-y-1">
+                <a href="mailto:deepakshankar810@gmail.com" class="inline-flex items-center px-8 py-4 border-2 border-teal-500 text-teal-600 dark:text-teal-400 font-bold rounded-lg hover:bg-teal-500 hover:text-white transition duration-300 transform hover:-translate-y-1 animate-slide-in" style="animation-delay: 0.2s">
                     <i class="fas fa-paper-plane mr-2"></i> Say Hello
                 </a>
                 
-                <div class="mt-12 pt-8 border-t border-gray-100 dark:border-slate-700 flex justify-center space-x-8">
+                <div class="mt-12 pt-8 border-t border-gray-100 dark:border-slate-700 flex justify-center space-x-8 animate-slide-in" style="animation-delay: 0.3s">
                     <a href="https://github.com/deepakshankar810" class="text-gray-400 hover:text-gray-800 dark:hover:text-white transition"><i class="fab fa-github text-2xl"></i></a>
                     <a href="https://www.linkedin.com/in/deepak-s-p-rs7176005/" class="text-gray-400 hover:text-gray-800 dark:hover:text-white transition"><i class="fab fa-linkedin text-2xl"></i></a>
                 </div>
@@ -780,5 +761,87 @@
     <!-- Custom JS -->
     <script src="js/main.js"></script>
 
+    <script>
+        // Reset scroll to top on tab switch
+        function switchTab(tabId, animClass = 'fade-in') {
+            document.querySelectorAll('.tab-pane').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('fade-in', 'pop-in');
+            });
+            
+            const target = document.getElementById('tab-' + tabId);
+            if(target) {
+                target.classList.remove('hidden');
+                void target.offsetWidth;
+                target.classList.add(animClass);
+            }
+            
+            // Reset scroll
+            const main = document.getElementById('main-content');
+            if(main) main.scrollTop = 0;
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                if(btn.innerText.toLowerCase() === tabId) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        // Re-attach toggle theme
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+                if(typeof isDark !== 'undefined') isDark = false;
+            } else {
+                html.classList.add('dark');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+                if(typeof isDark !== 'undefined') isDark = true;
+            }
+        }
+
+        // Re-attach View My Work
+        function viewMyWork() {
+            const targets = ['projects', 'manuscripts'];
+            const randomTarget = targets[Math.floor(Math.random() * targets.length)];
+            switchTab(randomTarget, 'pop-in');
+        }
+
+        // Re-attach Modal logic
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.querySelector('.modal-backdrop').style.opacity = '1';
+                    modal.querySelector('.modal-panel').style.opacity = '1';
+                    modal.querySelector('.modal-panel').style.transform = 'scale(1)';
+                }, 10);
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if(modal) {
+                modal.querySelector('.modal-backdrop').style.opacity = '0';
+                modal.querySelector('.modal-panel').style.opacity = '0';
+                modal.querySelector('.modal-panel').style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+    </script>
 </body>
 </html>
