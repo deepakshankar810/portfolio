@@ -40,13 +40,13 @@ class Particle {
         if (this.y < 0) this.y = height;
         if (this.y > height) this.y = 0;
 
-        if(mouse.x != null) {
+        if (mouse.x != null) {
             let dx = mouse.x - this.x;
             let dy = mouse.y - this.y;
-            let distance = Math.sqrt(dx*dx + dy*dy);
+            let distance = Math.sqrt(dx * dx + dy * dy);
             if (distance < 100) {
-                this.x -= dx/20;
-                this.y -= dy/20;
+                this.x -= dx / 20;
+                this.y -= dy / 20;
             }
         }
     }
@@ -61,13 +61,13 @@ class Particle {
 function initParticles() {
     particles = [];
     let count = (width * height) / 15000;
-    for(let i=0; i<count; i++) particles.push(new Particle());
+    for (let i = 0; i < count; i++) particles.push(new Particle());
 }
 initParticles();
 
 function animate() {
     ctx.clearRect(0, 0, width, height);
-    
+
     for (let i = 0; i < particles.length; i++) {
         for (let j = i; j < particles.length; j++) {
             let dx = particles[i].x - particles[j].x;
@@ -76,7 +76,7 @@ function animate() {
 
             if (distance < 120) {
                 ctx.beginPath();
-                let alpha = 1 - distance/120;
+                let alpha = 1 - distance / 120;
                 // Standard JS string concatenation
                 ctx.strokeStyle = isDark ? 'rgba(45, 212, 191, ' + alpha + ')' : 'rgba(13, 148, 136, ' + alpha + ')';
                 ctx.lineWidth = 0.5;
@@ -96,7 +96,7 @@ animate();
 function toggleTheme() {
     const html = document.documentElement;
     const icon = document.getElementById('theme-icon');
-    
+
     if (html.classList.contains('dark')) {
         html.classList.remove('dark');
         icon.classList.remove('fa-sun');
@@ -113,19 +113,19 @@ function toggleTheme() {
 }
 
 // Initialize Theme
-(function() {
+(function () {
     const icon = document.getElementById('theme-icon');
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
         isDark = true;
-        if(icon) {
+        if (icon) {
             icon.classList.remove('fa-moon');
             icon.classList.add('fa-sun');
         }
     } else {
         document.documentElement.classList.remove('dark');
         isDark = false;
-        if(icon) {
+        if (icon) {
             icon.classList.remove('fa-sun');
             icon.classList.add('fa-moon');
         }
@@ -133,39 +133,18 @@ function toggleTheme() {
 })();
 
 // Tab Switching
-function switchTab(tabId, animClass = 'fade-in') {
-    document.querySelectorAll('.tab-pane').forEach(el => {
-        el.classList.add('hidden');
-        el.classList.remove('fade-in', 'pop-in');
-    });
-    
-    const target = document.getElementById('tab-' + tabId);
-    if(target) {
-        target.classList.remove('hidden');
-        void target.offsetWidth;
-        target.classList.add(animClass);
-    }
-    
-    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-    
-    const buttons = document.querySelectorAll('.nav-btn');
-    buttons.forEach(btn => {
-        if(btn.innerText.toLowerCase() === tabId) {
-            btn.classList.add('active');
-        }
-    });
-}
-
+// Note: basic switchTab is now handled inline in app.jl for faster response
+// Extra logic like 'pop-in' effect below:
 function viewMyWork() {
     const targets = ['projects', 'manuscripts'];
     const randomTarget = targets[Math.floor(Math.random() * targets.length)];
-    switchTab(randomTarget, 'pop-in');
+    if (typeof switchTab === 'function') switchTab(randomTarget, 'pop-in');
 }
 
 // Modals
 function openModal(id) {
     const modal = document.getElementById(id);
-    if(modal) {
+    if (modal) {
         modal.classList.remove('hidden');
         setTimeout(() => {
             modal.querySelector('.modal-backdrop').style.opacity = '1';
@@ -177,19 +156,19 @@ function openModal(id) {
 
 function closeModal(id) {
     const modal = document.getElementById(id);
-    if(modal) {
+    if (modal) {
         modal.querySelector('.modal-backdrop').style.opacity = '0';
         modal.querySelector('.modal-panel').style.opacity = '0';
         modal.querySelector('.modal-panel').style.transform = 'scale(0.95)';
-        
+
         setTimeout(() => {
             modal.classList.add('hidden');
         }, 300);
     }
 }
 
-document.addEventListener('keydown', function(e) { 
-    if(e.key === 'Escape') {
-        document.querySelectorAll('.fixed.inset-0:not(.hidden)').forEach(m => closeModal(m.id)); 
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.fixed.inset-0:not(.hidden)').forEach(m => closeModal(m.id));
     }
 });
