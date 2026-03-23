@@ -62,6 +62,13 @@ function render_manuscript_card(manu)
     badge_class = "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400"
 
     buttons_html = ""
+    if haskey(manu, "article_link")
+        buttons_html *= """
+        <a href="$(manu["article_link"])" target="_blank" onclick="event.stopPropagation()" class="flex items-center text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-white transition z-20 px-3 py-1 border border-teal-200 dark:border-teal-500/30 rounded-md hover:bg-teal-50 dark:hover:bg-teal-500/20 text-xs font-bold uppercase tracking-wider">
+            <i class="fas fa-file-alt mr-2"></i> Article
+        </a>
+        """
+    end
     if haskey(manu, "website_link")
         buttons_html *= """
         <a href="$(manu["website_link"])" target="_blank" onclick="event.stopPropagation()" class="flex items-center text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-white transition z-20 px-3 py-1 border border-teal-200 dark:border-teal-500/30 rounded-md hover:bg-teal-50 dark:hover:bg-teal-500/20 text-xs font-bold uppercase tracking-wider">
