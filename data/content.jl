@@ -83,16 +83,6 @@ const PROJECTS = [
 
 const MANUSCRIPTS = [
     Dict(
-        "id" => "manu1",
-        "title" => "Virulence Gene Prevalence in Enterococcus faecalis from Dental Infections in South India",
-        "type" => "Manuscript in Communication",
-        "points" => [
-            "Co-authored a study on virulence genes in Enterococcus faecalis and analyzed eight virulence genes in 36 E. faecalis isolates from South Indian dental infections.",
-            "Highlighted the clinical implications of virulence gene distribution, providing key insights into infection mechanisms.",
-            "Contributed to drafting and revising a manuscript on E. faecalis pathogenicity in oral infections."
-        ]
-    ),
-    Dict(
         "id" => "manu2",
         "title" => "juProt: A Web Application for Comparative Analysis of Protein-Ligand Interactomes",
         "type" => "Published in In Silico Pharmacology, Springer Nature",
@@ -107,6 +97,16 @@ const MANUSCRIPTS = [
             "Live tool: <a href='https://juprot-gui-1013240748285.us-central1.run.app/' target='_blank' class='text-teal-600 hover:underline font-bold'>juprot-gui</a>",
             "Website: <a href='http://www.juprot.info' target='_blank' class='text-teal-600 hover:underline font-bold'>juprot.info</a>",
             "Article: <a href='https://link.springer.com/article/10.1007/s40203-026-00588-6' target='_blank' class='text-teal-600 hover:underline font-bold'>link.springer.com</a>"
+        ]
+    ),
+    Dict(
+        "id" => "manu1",
+        "title" => "Virulence Gene Prevalence in Enterococcus faecalis from Dental Infections in South India",
+        "type" => "Manuscript in Communication",
+        "points" => [
+            "Co-authored a study on virulence genes in Enterococcus faecalis and analyzed eight virulence genes in 36 E. faecalis isolates from South Indian dental infections.",
+            "Highlighted the clinical implications of virulence gene distribution, providing key insights into infection mechanisms.",
+            "Contributed to drafting and revising a manuscript on E. faecalis pathogenicity in oral infections."
         ]
     ),
     Dict(
