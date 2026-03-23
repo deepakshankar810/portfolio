@@ -90,7 +90,7 @@ function home()
                             <button onclick="switchTab('about')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">About</button>
                             <button onclick="switchTab('skills')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Skills</button>
                             <button onclick="switchTab('projects')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Projects</button>
-                            <button onclick="switchTab('manuscripts')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Manuscripts</button>
+                            <button onclick="switchTab('manuscripts')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Publications</button>
                             <button onclick="switchTab('certifications')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Certifications</button>
                             <button onclick="switchTab('contact')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Contact</button>
                         </div>
@@ -175,7 +175,7 @@ function home()
 
             <!-- MANUSCRIPTS -->
             <div id="tab-manuscripts" class="tab-pane hidden p-6 md:p-12 max-w-7xl mx-auto fade-in relative z-10 pb-32">
-                <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Manuscripts</h2>
+                <h2 class="text-3xl font-bold text-center text-teal-700 dark:text-teal-400 mb-12">Publications</h2>
                 <div class="grid md:grid-cols-2 gap-6">
                     $manu_html
                 </div>
