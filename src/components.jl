@@ -61,9 +61,16 @@ end
 function render_manuscript_card(manu)
     badge_class = "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400"
 
-    link_html = ""
+    buttons_html = ""
+    if haskey(manu, "website_link")
+        buttons_html *= """
+        <a href="$(manu["website_link"])" target="_blank" onclick="event.stopPropagation()" class="flex items-center text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-white transition z-20 px-3 py-1 border border-teal-200 dark:border-teal-500/30 rounded-md hover:bg-teal-50 dark:hover:bg-teal-500/20 text-xs font-bold uppercase tracking-wider">
+            <i class="fas fa-globe mr-2"></i> Website
+        </a>
+        """
+    end
     if haskey(manu, "link")
-        link_html = """
+        buttons_html *= """
         <a href="$(manu["link"])" target="_blank" onclick="event.stopPropagation()" class="flex items-center text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-white transition z-20 px-3 py-1 border border-teal-200 dark:border-teal-500/30 rounded-md hover:bg-teal-50 dark:hover:bg-teal-500/20 text-xs font-bold uppercase tracking-wider">
             <i class="fas fa-external-link-alt mr-2"></i> Live Tool
         </a>
@@ -78,8 +85,10 @@ function render_manuscript_card(manu)
         <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 leading-snug mb-4 hover:text-teal-600 dark:hover:text-teal-400 transition">$(manu["title"])</h3>
         
         <div class="mt-auto flex items-center justify-between">
-            <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center"><i class="fas fa-info-circle mr-2"></i> Click for details</p>
-            $link_html
+            <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center shrink-0 mr-2"><i class="fas fa-info-circle mr-2"></i> Click</p>
+            <div class="flex flex-wrap gap-2 justify-end">
+                $buttons_html
+            </div>
         </div>
     </div>
     """

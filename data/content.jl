@@ -97,6 +97,7 @@ const MANUSCRIPTS = [
         "title" => "juProt: A Web Application for Comparative Analysis of Protein-Ligand Interactomes",
         "type" => "Published in In Silico Pharmacology, Springer Nature",
         "link" => "https://juprot-gui-1013240748285.us-central1.run.app/",
+        "website_link" => "https://www.juprot.info",
         "points" => [
             "Assisted in the development of juProt, an open-source web application built in Julia (Genie.jl) that automates the comparative analysis of the complete protein-ligand interactions such as Hydrogen bonds, Hydrophobic contacts, Salt Bridges, &pi;-Stacking, etc.",
             "Conducted rigorous validation against standalone PLIP using 20 diverse experimental and docked complexes, achieving 100% concordance across all interaction types.",
