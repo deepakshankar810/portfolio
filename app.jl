@@ -244,7 +244,8 @@ function home()
                 
                 const buttons = document.querySelectorAll('.nav-btn');
                 buttons.forEach(btn => {
-                    if(btn.innerText.toLowerCase() === tabId) {
+                    let text = btn.innerText.toLowerCase();
+                    if(text === tabId || (text === 'publications' && tabId === 'manuscripts')) {
                         btn.classList.add('active');
                     }
                 });

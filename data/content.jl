@@ -104,7 +104,8 @@ const MANUSCRIPTS = [
             "Applied juProt to study Human Aromatase inhibitors (Letrozole/Anastrozole) which will be helpful in studying and understanding how mutation impact interaction patterns and affect drug binding affinity.",
             "Key features include automated PDB retrieval, interaction fold-change calculation and generation of 2D Spatial Pocket Projection.",
             "Live tool: <a href='https://juprot-gui-1013240748285.us-central1.run.app/' target='_blank' class='text-teal-600 hover:underline font-bold'>juprot-gui</a>",
-            "Website: <a href='http://www.juprot.info' target='_blank' class='text-teal-600 hover:underline font-bold'>juprot.info</a>"
+            "Website: <a href='http://www.juprot.info' target='_blank' class='text-teal-600 hover:underline font-bold'>juprot.info</a>",
+            "Article: <a href='https://link.springer.com/article/10.1007/s40203-026-00588-6' target='_blank' class='text-teal-600 hover:underline font-bold'>link.springer.com</a>"
         ]
     ),
     Dict(
