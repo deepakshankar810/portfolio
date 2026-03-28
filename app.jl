@@ -121,9 +121,9 @@ function home()
                     <p class="text-lg text-gray-500 dark:text-gray-400 mb-10 w-full mx-auto animate-slide-in" style="animation-delay: 0.2s">$(PROFILE["tagline"])</p>
                     
                     <div class="flex justify-center space-x-8 animate-slide-in" style="animation-delay: 0.3s">
-                        <a href="$(PROFILE["github"])" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition transform hover:scale-110 floating" style="animation-delay: 0s"><i class="fab fa-github"></i></a>
-                        <a href="$(PROFILE["linkedin"])" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition transform hover:scale-110 floating" style="animation-delay: 0.5s"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:$(PROFILE["email"])" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-teal-600 dark:hover:text-teal-400 transition transform hover:scale-110 floating" style="animation-delay: 1s"><i class="fas fa-envelope"></i></a>
+                        <a href="$(PROFILE["github"])" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-[#39ff14] hover:drop-shadow-[0_0_12px_rgba(57,255,20,0.8)] transition-all duration-300 transform hover:scale-110 floating" style="animation-delay: 0s"><i class="fab fa-github"></i></a>
+                        <a href="$(PROFILE["linkedin"])" target="_blank" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-[#39ff14] hover:drop-shadow-[0_0_12px_rgba(57,255,20,0.8)] transition-all duration-300 transform hover:scale-110 floating" style="animation-delay: 0.5s"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:$(PROFILE["email"])" class="text-3xl text-gray-400 dark:text-gray-500 hover:text-[#39ff14] hover:drop-shadow-[0_0_12px_rgba(57,255,20,0.8)] transition-all duration-300 transform hover:scale-110 floating" style="animation-delay: 1s"><i class="fas fa-envelope"></i></a>
                     </div>
                     
                     <div class="mt-12 animate-slide-in" style="animation-delay: 0.4s">
