@@ -194,7 +194,7 @@ function home()
                 <div class="text-center max-w-2xl glass dark:bg-slate-800/50 p-10 rounded-2xl shadow-xl">
                     <h2 class="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-6 animate-slide-in" style="animation-delay: 0.1s">Get In Touch</h2>
                     <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 animate-slide-in" style="animation-delay: 0.2s">
-                        I'm always open to discussing new ideas, collaborating on projects. 
+                        I'm always open to discussing new ideas and collaborating on projects. 
                         Whether you have a question or just want to say hi, my inbox is always open!
                     </p>
                     <div class="animate-slide-in" style="animation-delay: 0.3s">
