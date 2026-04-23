@@ -171,6 +171,13 @@ function closeModal(id) {
 function openCVPreview() {
     const modal = document.getElementById('cv-preview-modal');
     if (modal) {
+        // Force iframe to reload by appending a unique timestamp
+        const iframe = modal.querySelector('iframe');
+        if (iframe) {
+            // Keep the base URL but append/update the v parameter
+            iframe.src = './CV/Deepak_CV.pdf?v=' + new Date().getTime();
+        }
+        
         modal.classList.remove('hidden');
         setTimeout(() => {
             modal.querySelector('.cv-modal-backdrop').style.opacity = '1';
