@@ -167,8 +167,34 @@ function closeModal(id) {
     }
 }
 
+// CV Preview Modal
+function openCVPreview() {
+    const modal = document.getElementById('cv-preview-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.querySelector('.cv-modal-backdrop').style.opacity = '1';
+            modal.querySelector('.cv-modal-panel').style.opacity = '1';
+            modal.querySelector('.cv-modal-panel').style.transform = 'scale(1)';
+        }, 10);
+    }
+}
+
+function closeCVPreview() {
+    const modal = document.getElementById('cv-preview-modal');
+    if (modal) {
+        modal.querySelector('.cv-modal-backdrop').style.opacity = '0';
+        modal.querySelector('.cv-modal-panel').style.opacity = '0';
+        modal.querySelector('.cv-modal-panel').style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+}
+
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
+        closeCVPreview();
         document.querySelectorAll('.fixed.inset-0:not(.hidden)').forEach(m => closeModal(m.id));
     }
 });
