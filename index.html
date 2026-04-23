@@ -57,25 +57,25 @@
             <div class="flex items-center justify-between h-20">
                 
                 <!-- LEFT SIDE: Scrollable Tabs -->
-                <div class="flex-1 flex items-center overflow-x-auto no-scrollbar mask-gradient mr-4">
+                <div class="flex-1 flex items-center overflow-x-auto no-scrollbar mask-gradient mr-4 pointer-events-none">
                     <div class="flex space-x-1 md:space-x-6">
-                        <button onclick="switchTab('home')" class="nav-btn active text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Home</button>
-                        <button onclick="switchTab('about')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">About</button>
-                        <button onclick="switchTab('skills')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Skills</button>
-                        <button onclick="switchTab('projects')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Projects</button>
-                        <button onclick="switchTab('manuscripts')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Publications</button>
-                        <button onclick="switchTab('certifications')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Certifications</button>
-                        <button onclick="switchTab('contact')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap">Contact</button>
+                        <button onclick="switchTab('home')" class="nav-btn active text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap pointer-events-auto">Home</button>
+                        <button onclick="switchTab('about')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap pointer-events-auto">About</button>
+                        <button onclick="switchTab('skills')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap pointer-events-auto">Skills</button>
+                        <button onclick="switchTab('projects')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap pointer-events-auto">Projects</button>
+                        <button onclick="switchTab('manuscripts')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap pointer-events-auto">Publications</button>
+                        <button onclick="switchTab('certifications')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap pointer-events-auto">Certifications</button>
+                        <button onclick="switchTab('contact')" class="nav-btn text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition px-3 py-2 text-sm font-medium whitespace-nowrap pointer-events-auto">Contact</button>
                     </div>
                 </div>
 
-                <!-- RIGHT SIDE: Theme Switcher & CV -->
-                <div class="flex-shrink-0 pl-4 border-l border-gray-200 dark:border-gray-700 flex items-center space-x-2">
-                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition focus:outline-none transform hover:scale-110 active:scale-95" title="Toggle Theme">
-                        <i id="theme-icon" class="fas fa-moon text-teal-600 dark:text-teal-400 text-xl md:text-2xl"></i>
-                    </button>
-                    <button onclick="openCVPreview()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition focus:outline-none transform hover:scale-110 active:scale-95" title="View CV">
+                <!-- RIGHT SIDE: CV & Theme Switcher -->
+                <div class="flex-shrink-0 pl-4 border-l border-gray-200 dark:border-gray-700 flex items-center space-x-2 relative z-[100]">
+                    <button onclick="openCVPreview()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition focus:outline-none transform hover:scale-110 active:scale-95 cursor-pointer" title="View CV">
                         <i class="fas fa-file-pdf text-teal-600 dark:text-teal-400 text-xl md:text-2xl"></i>
+                    </button>
+                    <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition focus:outline-none transform hover:scale-110 active:scale-95 cursor-pointer" title="Toggle Theme">
+                        <i id="theme-icon" class="fas fa-moon text-teal-600 dark:text-teal-400 text-xl md:text-2xl"></i>
                     </button>
                 </div>
 
