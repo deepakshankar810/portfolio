@@ -119,7 +119,7 @@ function home()
             <!-- HOME -->
             <div id="tab-home" class="tab-pane min-h-full flex items-center justify-center p-4 fade-in relative z-10">
                 <div class="text-center w-full max-w-4xl">
-                    <h1 class="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 animate-slide-in">$(PROFILE["name"])</h1>
+                    <h1 class="font-bold text-gray-900 dark:text-white mb-4 animate-slide-in" style="font-size: clamp(3rem, 10vw, 5rem);">$(PROFILE["name"])</h1>
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-600 dark:text-gray-400 mb-6 animate-slide-in" style="animation-delay: 0.1s">$(PROFILE["title"])</h2>
                     <p class="text-lg text-gray-500 dark:text-gray-400 mb-10 w-full mx-auto animate-slide-in" style="animation-delay: 0.2s">$(PROFILE["tagline"])</p>
                     

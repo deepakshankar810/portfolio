@@ -9,10 +9,25 @@ let isDark = document.documentElement.classList.contains('dark');
 
 // Resize Canvas
 function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    width = window.innerWidth;
+    height = window.innerHeight;
+    
+    // Set display size
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    
+    // Set actual resolution
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    
+    // Scale context to match actual resolution
+    ctx.scale(dpr, dpr);
 }
-window.addEventListener('resize', resize);
+window.addEventListener('resize', () => {
+    resize();
+    initParticles(); // Re-init particles on resize to fit new dimensions
+});
 resize();
 
 // Mouse Interaction
