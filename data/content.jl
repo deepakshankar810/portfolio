@@ -135,6 +135,16 @@ const CERTS = [
     Dict(
         "id" => "c1",
         "icon" => "fa-laptop-code",
+        "title" => "Homology Modeling, Binding Site Prediction, and Multi-Ligand Docking: From Theory to Application",
+        "subtitle" => "Hands-on workshop on computational biology",
+        "points" => [
+            "Successfully completed a hands-on workshop on homology modeling, binding site prediction, and multiple-ligand molecular docking, gaining practical experience in computational biology and protein–ligand interaction analysis.",
+            "Enhanced proficiency in protein structure modeling, molecular docking workflows, structure validation, and bioinformatics tools used for drug discovery and computational research."
+        ]
+    ),
+    Dict(
+        "id" => "c2",
+        "icon" => "fa-laptop-code",
         "title" => "Green Tea Bioactives as Natural DHT Blocker",
         "subtitle" => "E-poster presentation on sustainable therapeutics",
         "points" => [
@@ -143,7 +153,7 @@ const CERTS = [
         ]
     ),
     Dict(
-        "id" => "c2",
+        "id" => "c3",
         "icon" => "fa-leaf",
         "title" => "Seminar & Workshop on Biodiversity to Biotechnology",
         "subtitle" => "Two-day seminar",
@@ -153,7 +163,7 @@ const CERTS = [
         ]
     ),
     Dict(
-        "id" => "c3",
+        "id" => "c4",
         "icon" => "fa-graduation-cap",
         "title" => "SWAYAM NPTEL- Basics of Crop Breeding and Plant Biotechnology",
         "subtitle" => "12-week IIT Kharagpur course",
@@ -163,23 +173,13 @@ const CERTS = [
         ]
     ),
     Dict(
-        "id" => "c4",
+        "id" => "c5",
         "icon" => "fa-robot",
         "title" => "Generative AI MasterMind – Outskill",
         "subtitle" => "Certification in Prompt Engineering & AI Applications",
         "points" => [
             "Successfully completed the Generative AI MasterMind certification, gaining hands-on experience with prompt engineering and practical AI applications.",
             "Enhanced proficiency in content generation, automation and data-driven problem-solving."
-        ]
-    ),
-    Dict(
-        "id" => "c5",
-        "icon" => "fa-microscope",
-        "title" => "Homology Modeling, Binding Site Prediction, and Multi-Ligand Docking: From Theory to Application",
-        "subtitle" => "Hands-on workshop on computational biology",
-        "points" => [
-            "Successfully completed a hands-on workshop on homology modeling, binding site prediction, and multiple-ligand molecular docking, gaining practical experience in computational biology and protein–ligand interaction analysis.",
-            "Enhanced proficiency in protein structure modeling, molecular docking workflows, structure validation, and bioinformatics tools used for drug discovery and computational research."
         ]
     )
 ]
