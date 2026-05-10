@@ -171,5 +171,15 @@ const CERTS = [
             "Successfully completed the Generative AI MasterMind certification, gaining hands-on experience with prompt engineering and practical AI applications.",
             "Enhanced proficiency in content generation, automation and data-driven problem-solving."
         ]
+    ),
+    Dict(
+        "id" => "c5",
+        "icon" => "fa-microscope",
+        "title" => "Homology Modeling, Binding Site Prediction, and Multi-Ligand Docking: From Theory to Application",
+        "subtitle" => "Hands-on workshop on computational biology",
+        "points" => [
+            "Successfully completed a hands-on workshop on homology modeling, binding site prediction, and multiple-ligand molecular docking, gaining practical experience in computational biology and protein–ligand interaction analysis.",
+            "Enhanced proficiency in protein structure modeling, molecular docking workflows, structure validation, and bioinformatics tools used for drug discovery and computational research."
+        ]
     )
 ]
