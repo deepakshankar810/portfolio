@@ -201,14 +201,14 @@ function home()
                         Whether you have a question or just want to say hi, my inbox is always open!
                     </p>
                     <div class="animate-slide-in" style="animation-delay: 0.3s">
-                        <a href="mailto:$(PROFILE["email"])" class="inline-flex items-center px-8 py-4 bg-teal-500 text-white font-bold rounded-lg hover:bg-teal-600 transition duration-300 transform hover:-translate-y-1 shadow-lg shadow-teal-500/20">
+                        <a href="mailto:$(PROFILE["email"])" class="inline-flex items-center px-8 py-4 bg-teal-500 text-white font-bold rounded-lg hover:bg-teal-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-teal-500/20 hover:drop-shadow-[0_0_15px_rgba(20,184,166,0.6)]">
                             <i class="fas fa-paper-plane mr-2"></i> Say Hello
                         </a>
                     </div>
                     
                     <div class="mt-12 pt-8 border-t border-gray-100 dark:border-slate-700 flex justify-center space-x-8 animate-slide-in" style="animation-delay: 0.4s">
-                        <a href="$(PROFILE["github"])" class="text-gray-400 hover:text-gray-800 dark:hover:text-white transition"><i class="fab fa-github text-2xl"></i></a>
-                        <a href="$(PROFILE["linkedin"])" class="text-gray-400 hover:text-gray-800 dark:hover:text-white transition"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="$(PROFILE["github"])" target="_blank" class="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 hover:drop-shadow-[0_0_12px_rgba(13,148,136,0.8)] dark:hover:drop-shadow-[0_0_12px_rgba(45,212,191,0.8)] transition-all duration-300 transform hover:scale-110"><i class="fab fa-github text-2xl"></i></a>
+                        <a href="$(PROFILE["linkedin"])" target="_blank" class="text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 hover:drop-shadow-[0_0_12px_rgba(13,148,136,0.8)] dark:hover:drop-shadow-[0_0_12px_rgba(45,212,191,0.8)] transition-all duration-300 transform hover:scale-110"><i class="fab fa-linkedin text-2xl"></i></a>
                     </div>
                 </div>
             </div>
