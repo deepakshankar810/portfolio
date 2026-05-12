@@ -81,16 +81,14 @@ body, a, button, [onclick], .cursor-pointer {
 .cursor svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    /* Clean by default */
+    transition: filter 0.3s ease;
 }
 
 .dark .cursor {
     color: #2dd4bf; /* Dark mode teal */
 }
 
-.dark .cursor svg {
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); /* Matching shadow weight */
-}
 
 .dark .cursor svg path {
     stroke: #0B1120; /* Keep the contrast border */
@@ -103,8 +101,14 @@ body, a, button, [onclick], .cursor-pointer {
 
 /* Hover effects */
 .cursor.active {
-    transform: translate(-7px, -4px) scale(1.3); /* Clear, visible scaling for interaction */
+    transform: translate(-7px, -4px) scale(1.15); /* Balanced size difference for interaction */
     color: #2dd4bf; /* Brighten on hover */
+}
+
+.cursor.active svg {
+    /* Neon glow ONLY appears on hover */
+    filter: drop-shadow(0 0 8px rgba(45, 212, 191, 0.8))
+            drop-shadow(0 0 20px rgba(45, 212, 191, 0.4));
 }
 
 /* Suble pulse for interactivity */
@@ -112,6 +116,16 @@ body, a, button, [onclick], .cursor-pointer {
     0% { opacity: 0.8; }
     50% { opacity: 1; }
     100% { opacity: 0.8; }
+}
+
+@keyframes glow-fade-in {
+    from {
+        filter: drop-shadow(0 0 0px rgba(13, 148, 136, 0));
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .cursor {
