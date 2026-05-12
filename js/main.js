@@ -255,22 +255,23 @@ if (cursorDot) {
     // Hover effects for interactive elements
     const interactiveElements = 'a, button, [onclick], .cursor-pointer, input, textarea, select';
     
-    function addCursorEvents() {
-        document.querySelectorAll(interactiveElements).forEach(el => {
-            // Avoid adding multiple listeners
-            if (!el.dataset.cursorBound) {
-                el.addEventListener('mouseenter', () => {
-                    cursorDot.classList.add('active');
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursorDot.classList.remove('active');
-                });
-                el.dataset.cursorBound = "true";
-            }
-        });
-    }
-    
-    addCursorEvents();
+    // Use event delegation for hover effects to handle dynamic content reliably
+    document.addEventListener('mouseover', (e) => {
+        const target = e.target.closest(interactiveElements);
+        if (target) {
+            cursorDot.classList.add('active');
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        const target = e.target.closest(interactiveElements);
+        const relatedTarget = e.relatedTarget ? e.relatedTarget.closest(interactiveElements) : null;
+        
+        // Only remove active class if we're not moving to another interactive element
+        if (target && target !== relatedTarget) {
+            cursorDot.classList.remove('active');
+        }
+    });
     
     // Hide cursor when over iframes (like the CV preview) where tracking is restricted
     function addIframeListeners() {
@@ -291,7 +292,6 @@ if (cursorDot) {
     
     // Re-run on potential dynamic content or tab switches
     const observer = new MutationObserver(() => {
-        addCursorEvents();
         addIframeListeners();
     });
     observer.observe(document.body, { childList: true, subtree: true });

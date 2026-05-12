@@ -85,11 +85,11 @@ function render_manuscript_card(manu)
     end
 
     """
-    <div onclick="openModal('$(manu["id"])')" class="glass dark:bg-slate-800/50 p-6 rounded-xl cursor-pointer hover:shadow-lg transition border-l-4 border-l-purple-500 flex flex-col h-full hover:-translate-y-1">
+    <div onclick="openModal('$(manu["id"])')" class="glass dark:bg-slate-800/50 p-6 rounded-xl relative overflow-hidden group cursor-pointer hover:shadow-xl hover:shadow-teal-100 dark:hover:shadow-teal-900/20 transition border-l-4 border-l-purple-500 flex flex-col h-full hover:-translate-y-1">
         <div class="flex justify-between items-center mb-3">
             <span class="text-xs font-bold px-2 py-1 rounded $badge_class">$(manu["type"])</span>
         </div>
-        <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 leading-snug mb-4 hover:text-teal-600 dark:hover:text-teal-400 transition">$(manu["title"])</h3>
+        <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100 leading-snug mb-4 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition">$(manu["title"])</h3>
         
         <div class="mt-auto flex items-center justify-between">
             <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center shrink-0 mr-2"><i class="fas fa-info-circle mr-2"></i> Click</p>
