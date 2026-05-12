@@ -220,3 +220,79 @@ document.addEventListener('keydown', function (e) {
         document.querySelectorAll('.fixed.inset-0:not(.hidden)').forEach(m => closeModal(m.id));
     }
 });
+
+// --- Custom Cursor Tracking ---
+const cursorDot = document.querySelector('.cursor');
+
+if (cursorDot) {
+    let cursorX = 0;
+    let cursorY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+        cursorX = e.clientX;
+        cursorY = e.clientY;
+        
+        cursorDot.style.left = cursorX + 'px';
+        cursorDot.style.top = cursorY + 'px';
+
+        // Ensure cursor is visible when moving
+        if (cursorDot.style.opacity === '0' || cursorDot.style.opacity === '') {
+            cursorDot.style.opacity = '1';
+        }
+    });
+
+    // Hide cursor when mouse leaves the window
+    document.addEventListener('mouseleave', () => {
+        cursorDot.style.opacity = '0';
+    });
+
+    // Show cursor when mouse enters the window
+    document.addEventListener('mouseenter', () => {
+        cursorDot.style.opacity = '1';
+    });
+
+
+    // Hover effects for interactive elements
+    const interactiveElements = 'a, button, [onclick], .cursor-pointer, input, textarea, select';
+    
+    function addCursorEvents() {
+        document.querySelectorAll(interactiveElements).forEach(el => {
+            // Avoid adding multiple listeners
+            if (!el.dataset.cursorBound) {
+                el.addEventListener('mouseenter', () => {
+                    cursorDot.classList.add('active');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorDot.classList.remove('active');
+                });
+                el.dataset.cursorBound = "true";
+            }
+        });
+    }
+    
+    addCursorEvents();
+    
+    // Hide cursor when over iframes (like the CV preview) where tracking is restricted
+    function addIframeListeners() {
+        document.querySelectorAll('iframe').forEach(iframe => {
+            if (!iframe.dataset.cursorBound) {
+                iframe.addEventListener('mouseenter', () => {
+                    cursorDot.style.opacity = '0';
+                });
+                iframe.addEventListener('mouseleave', () => {
+                    cursorDot.style.opacity = '1';
+                });
+                iframe.dataset.cursorBound = "true";
+            }
+        });
+    }
+    
+    addIframeListeners();
+    
+    // Re-run on potential dynamic content or tab switches
+    const observer = new MutationObserver(() => {
+        addCursorEvents();
+        addIframeListeners();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+}

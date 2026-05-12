@@ -236,6 +236,14 @@ function home()
             </div>
         </div>
 
+        <!-- Custom Cursor -->
+        <div class="cursor">
+            <svg viewBox="-2 -2 25 30" xmlns="http://www.w3.org/2000/svg">
+                <path class="cursor-path" d="M3 1 Q 12 8, 18 15 L 10 15 Q 8 15, 3 20 Z" 
+                      fill="currentColor" stroke="black" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+        </div>
+
         <!-- Custom JS -->
         <script src="./js/main.js"></script>
 
