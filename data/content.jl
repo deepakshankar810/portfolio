@@ -102,11 +102,13 @@ const MANUSCRIPTS = [
     Dict(
         "id" => "manu1",
         "title" => "Virulence Gene Prevalence in Enterococcus faecalis from Dental Infections in South India",
-        "type" => "Manuscript in Communication",
+        "type" => "Published in Indian Journal of Microbiology Research",
+        "article_link" => "https://ijmronline.org/archive/volume/13/issue/2/article/27161",
         "points" => [
             "Co-authored a study on virulence genes in Enterococcus faecalis and analyzed eight virulence genes in 36 E. faecalis isolates from South Indian dental infections.",
             "Highlighted the clinical implications of virulence gene distribution, providing key insights into infection mechanisms.",
-            "Contributed to drafting and revising a manuscript on E. faecalis pathogenicity in oral infections."
+            "Contributed to drafting and revising a manuscript on E. faecalis pathogenicity in oral infections.",
+            "Article: <a href='https://ijmronline.org/archive/volume/13/issue/2/article/27161' target='_blank' class='text-teal-600 hover:underline font-bold'>ijmronline.org</a>"
         ]
     ),
     Dict(
