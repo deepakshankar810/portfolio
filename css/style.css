@@ -3,7 +3,7 @@
 
 html {
     /* Fluid base font size: dynamically scale all rem-based styling (paddings, margins, grid gaps, text, etc.) across different laptop/monitor sizes */
-    font-size: clamp(15px, 0.35vw + 12.5px, 20px);
+    font-size: clamp(15px, 0.4vw + 12px, 21px) !important;
 }
 
 body { 
@@ -11,9 +11,19 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Ensure content doesn't get too wide on ultra-high resolution monitors */
+/* Ensure content doesn't get too wide on ultra-high resolution monitors, but scale on larger viewports */
 .max-w-7xl {
     max-width: min(80rem, 90vw);
+    transition: max-width 0.3s ease;
+}
+
+@media (min-width: 1536px) {
+    .max-w-7xl {
+        max-width: min(92rem, 92vw);
+    }
+    .max-w-6xl {
+        max-width: min(84rem, 90vw);
+    }
 }
 
 /* Animation Classes */

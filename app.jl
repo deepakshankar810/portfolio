@@ -38,7 +38,7 @@ function home()
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         
         <!-- Custom CSS (includes root font-size fluid scaling for 14", 15", and 16" screens) -->
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/style.css?v=1.0.3">
 
         <!-- Tailwind Dark Mode Config -->
         <script>
@@ -55,6 +55,11 @@ function home()
         </script>
 
         <style>
+            /* Fluid base font size: dynamically scale all rem-based styling (paddings, margins, grid gaps, text, etc.) across different laptop/monitor sizes */
+            html {
+                font-size: clamp(15px, 0.4vw + 12px, 21px) !important;
+            }
+
             /* Hide Scrollbar for Mobile Nav */
             .no-scrollbar::-webkit-scrollbar { display: none; }
             .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
